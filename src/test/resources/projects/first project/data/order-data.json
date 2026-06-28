@@ -1,0 +1,9 @@
+{
+  "products": [
+    "Brocolli",
+    "Cauliflower",
+    "Cucumber"
+  ],
+  "country": "Canada",
+  "expectedSuccessMessage": "Thank you, your order has been placed successfully"
+}

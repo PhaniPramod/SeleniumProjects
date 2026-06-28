@@ -1,0 +1,12 @@
+target/
+.allure/
+allure-results/
+allure-report/
+logs/
+.idea/
+.vscode/
+*.iml
+*.log
+hs_err_pid*.log
+replay_pid*.log
+.DS_Store
