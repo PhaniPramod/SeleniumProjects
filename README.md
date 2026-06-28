@@ -52,6 +52,7 @@ For a custom package folder, add `'-Dproject.package=<package-folder>'`.
 
 - `SUITE_XML`
 - `PROJECT_NAME`
+- `PROJECT_PACKAGE`
 - `BROWSER`
 - `EXECUTION`
 - `BASE_URL`
