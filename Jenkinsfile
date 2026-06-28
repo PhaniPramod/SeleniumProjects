@@ -68,7 +68,6 @@ pipeline {
     post {
         always {
             junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
-            allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
             archiveArtifacts allowEmptyArchive: true, artifacts: 'logs/**/*.log,target/allure-results/**,target/surefire-reports/**'
         }
     }
