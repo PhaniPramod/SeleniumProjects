@@ -1,1 +1,1 @@
-# CursorProjects
+# SeleniumProjects
