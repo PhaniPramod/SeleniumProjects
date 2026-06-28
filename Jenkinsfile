@@ -2,9 +2,14 @@ pipeline {
     agent any
 
     options {
+        skipDefaultCheckout(true)
         timestamps()
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '20'))
+    }
+
+    environment {
+        MAVEN_OPTS = '-Xms64m -Xmx384m -XX:MaxMetaspaceSize=192m -Djava.awt.headless=true'
     }
 
     parameters {
