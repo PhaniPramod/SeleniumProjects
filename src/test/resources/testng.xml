@@ -5,9 +5,9 @@
         <listener class-name="com.phanipramod.automation.runners.ProjectSuiteListener"/>
         <listener class-name="com.phanipramod.automation.core.reporting.AllureTestListener"/>
     </listeners>
-    <test name="Template Project Tests">
-        <packages>
-            <package name="com.phanipramod.automation.projects.template.tests"/>
-        </packages>
+    <test name="BDD Tests">
+        <classes>
+            <class name="com.phanipramod.automation.runners.CucumberTestRunner"/>
+        </classes>
     </test>
 </suite>

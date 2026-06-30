@@ -13,12 +13,12 @@ pipeline {
     }
 
     parameters {
-        choice(name: 'SUITE_XML', choices: ['testng.xml', 'cucumber.xml'], description: 'Suite file')
+        choice(name: 'SUITE_XML', choices: ['cucumber.xml', 'testng.xml'], description: 'Suite file')
         choice(name: 'BROWSER', choices: ['chrome', 'firefox', 'edge'], description: 'Browser')
         choice(name: 'EXECUTION', choices: ['local', 'remote'], description: 'Execution mode')
-        string(name: 'PROJECT_NAME', defaultValue: 'template', description: 'Project folder name')
-        string(name: 'PROJECT_PACKAGE', defaultValue: '', description: 'Optional Java package folder')
-        string(name: 'BASE_URL', defaultValue: 'https://example.com', description: 'UI application base URL')
+        string(name: 'PROJECT_NAME', defaultValue: 'first project', description: 'Project folder name')
+        string(name: 'PROJECT_PACKAGE', defaultValue: 'firstproject', description: 'Optional Java package folder')
+        string(name: 'BASE_URL', defaultValue: 'https://rahulshettyacademy.com/seleniumPractise/#/', description: 'UI application base URL')
         string(name: 'API_BASE_URL', defaultValue: 'https://jsonplaceholder.typicode.com', description: 'API base URL')
         string(name: 'GRID_URL', defaultValue: 'http://localhost:4444/wd/hub', description: 'Selenium Grid URL')
         string(name: 'GROUPS', defaultValue: '', description: 'Optional TestNG groups such as ui,api,smoke')
@@ -36,6 +36,11 @@ pipeline {
         stage('Run Automation') {
             steps {
                 script {
+                    def projectPackage = params.PROJECT_PACKAGE?.trim()
+                    if (!projectPackage) {
+                        projectPackage = params.PROJECT_NAME.replaceAll('[^A-Za-z0-9_]', '').toLowerCase()
+                    }
+
                     def mavenProperties = [
                             "-DsuiteXmlFile=src/test/resources/${params.SUITE_XML}",
                             "-Dbrowser=${params.BROWSER}",
@@ -44,14 +49,12 @@ pipeline {
                             "-Dbase.url=${params.BASE_URL}",
                             "-Dapi.base.url=${params.API_BASE_URL}",
                             "-Dgrid.url=${params.GRID_URL}",
-                            "-Dcucumber.features=src/test/resources/features/${params.PROJECT_NAME}",
+                            "-Dcucumber.features=src/test/resources/features/${projectPackage}",
                             "-Dheadless=${params.HEADLESS}"
                     ]
 
-                    if (params.PROJECT_PACKAGE?.trim()) {
-                        mavenProperties.add("-Dproject.package=${params.PROJECT_PACKAGE.trim()}")
-                    }
-                    if (params.GROUPS?.trim()) {
+                    mavenProperties.add("-Dproject.package=${projectPackage}")
+                    if (params.SUITE_XML == 'testng.xml' && params.GROUPS?.trim()) {
                         mavenProperties.add("-Dgroups=${params.GROUPS.trim()}")
                     }
                     if (params.CUCUMBER_TAGS?.trim()) {

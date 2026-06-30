@@ -39,7 +39,7 @@ public final class FrameworkConfig {
     }
 
     public static String projectName() {
-        return value("project.name", "template");
+        return value("project.name", "first project");
     }
 
     public static String value(String key, String defaultValue) {
@@ -58,7 +58,7 @@ public final class FrameworkConfig {
 
     private static Properties loadProjectProperties() {
         Properties properties = new Properties();
-        String projectName = System.getProperty("project.name", "template");
+        String projectName = System.getProperty("project.name", "first project");
         String resourcePath = "projects/" + projectName + "/config.properties";
 
         try (InputStream stream = FrameworkConfig.class.getClassLoader().getResourceAsStream(resourcePath)) {

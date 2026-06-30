@@ -1,0 +1,17 @@
+package com.phanipramod.automation.projects.firstproject.steps;
+
+import com.phanipramod.automation.core.driver.DriverLifecycle;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+
+public class GreenKartHooks {
+    @Before
+    public void setUpBrowser() {
+        DriverLifecycle.startDriver();
+    }
+
+    @After
+    public void tearDownBrowser() {
+        DriverLifecycle.quitDriver();
+    }
+}

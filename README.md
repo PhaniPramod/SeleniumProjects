@@ -23,10 +23,7 @@
 
 ```powershell
 .\mvnw.cmd clean test
-.\mvnw.cmd clean test '-Dproject.name=template' '-Dgroups=ui'
-.\mvnw.cmd clean test '-Dproject.name=template' '-Dgroups=api'
-.\mvnw.cmd clean test '-Dproject.name=template' '-Dgroups=smoke'
-.\mvnw.cmd test '-Dproject.name=first project' '-Dgroups=ui'
+.\mvnw.cmd test '-Dproject.name=first project' '-Dproject.package=firstproject' '-Dcucumber.filter.tags=@greenkart'
 ```
 
 `project.name` selects the resource folder under `src/test/resources/projects`.
@@ -39,7 +36,7 @@ For a custom package folder, add `'-Dproject.package=<package-folder>'`.
 ```
 
 ```powershell
-.\mvnw.cmd clean test '-DsuiteXmlFile=src/test/resources/cucumber.xml' '-Dcucumber.features=src/test/resources/features/template'
+.\mvnw.cmd clean test '-DsuiteXmlFile=src/test/resources/cucumber.xml' '-Dcucumber.features=src/test/resources/features/firstproject' '-Dcucumber.filter.tags=@greenkart'
 ```
 
 ## Reporting
@@ -69,5 +66,5 @@ src/test/java/com/phanipramod/automation/projects/<project>/pages
 src/test/java/com/phanipramod/automation/projects/<project>/tests
 src/test/java/com/phanipramod/automation/projects/<project>/steps
 src/test/resources/projects/<project>
-src/test/resources/features/<project>
+src/test/resources/features/<projectpackage>
 ```

@@ -1,4 +1,4 @@
-package com.phanipramod.automation.projects.firstproject.tests;
+package com.phanipramod.automation.projects.firstproject.steps;
 
 import java.util.List;
 

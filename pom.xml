@@ -18,7 +18,7 @@
         <restassured.version>5.5.0</restassured.version>
         <jackson.version>2.18.2</jackson.version>
         <log4j.version>2.24.3</log4j.version>
-        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/cucumber.xml</suiteXmlFile>
         <groups></groups>
     </properties>
 

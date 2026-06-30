@@ -9,7 +9,7 @@ import org.testng.xml.XmlTest;
 public class ProjectSuiteListener implements IAlterSuiteListener {
     @Override
     public void alter(List<XmlSuite> suites) {
-        String projectName = System.getProperty("project.name", "template").trim();
+        String projectName = System.getProperty("project.name", "first project").trim();
         String projectPackage = System.getProperty("project.package", toPackageSegment(projectName)).trim();
         String packageName = "com.phanipramod.automation.projects." + toPackageSegment(projectPackage) + ".tests";
 
