@@ -5,7 +5,6 @@
 - Java 17
 - Maven
 - Selenium WebDriver
-- TestNG
 - Cucumber
 - Page Object Model
 - Selenium Grid
@@ -23,12 +22,10 @@
 
 ```powershell
 .\mvnw.cmd clean test
-.\mvnw.cmd test '-Dproject.name=first project' '-Dproject.package=firstproject' '-Dcucumber.filter.tags=@greenkart'
+.\mvnw.cmd clean test '-Dproject.name=first project' '-Dcucumber.filter.tags=@greenkart'
 ```
 
 `project.name` selects the resource folder under `src/test/resources/projects`.
-The Java package defaults to the same name with spaces and symbols removed.
-For a custom package folder, add `'-Dproject.package=<package-folder>'`.
 
 ```powershell
 .\mvnw.cmd clean test '-Dbrowser=chrome' '-Dexecution=local' '-Dheadless=true'
@@ -36,7 +33,7 @@ For a custom package folder, add `'-Dproject.package=<package-folder>'`.
 ```
 
 ```powershell
-.\mvnw.cmd clean test '-DsuiteXmlFile=src/test/resources/cucumber.xml' '-Dcucumber.features=src/test/resources/features/firstproject' '-Dcucumber.filter.tags=@greenkart'
+.\mvnw.cmd clean test '-Dcucumber.filter.tags=@greenkart'
 ```
 
 ## Reporting
@@ -47,15 +44,12 @@ For a custom package folder, add `'-Dproject.package=<package-folder>'`.
 
 ## Jenkins Parameters
 
-- `SUITE_XML`
 - `PROJECT_NAME`
-- `PROJECT_PACKAGE`
 - `BROWSER`
 - `EXECUTION`
 - `BASE_URL`
 - `API_BASE_URL`
 - `GRID_URL`
-- `GROUPS`
 - `CUCUMBER_TAGS`
 - `HEADLESS`
 
@@ -63,7 +57,6 @@ For a custom package folder, add `'-Dproject.package=<package-folder>'`.
 
 ```text
 src/test/java/com/phanipramod/automation/projects/<project>/pages
-src/test/java/com/phanipramod/automation/projects/<project>/tests
 src/test/java/com/phanipramod/automation/projects/<project>/steps
 src/test/resources/projects/<project>
 src/test/resources/features/<projectpackage>

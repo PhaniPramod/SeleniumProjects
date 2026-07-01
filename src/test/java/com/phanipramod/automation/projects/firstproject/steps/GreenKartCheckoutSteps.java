@@ -7,7 +7,7 @@ import com.phanipramod.automation.projects.firstproject.pages.GreenKartPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 public class GreenKartCheckoutSteps {
     private final GreenKartOrderData data = JsonDataReader.read(
@@ -54,7 +54,7 @@ public class GreenKartCheckoutSteps {
 
     @Then("the order success message should be displayed")
     public void theOrderSuccessMessageShouldBeDisplayed() {
-        Assert.assertTrue(
+        Assertions.assertTrue(
                 greenKartPage.successMessage().contains(data.expectedSuccessMessage()),
                 "Order success message was not displayed."
         );

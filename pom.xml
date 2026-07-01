@@ -12,14 +12,13 @@
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.45.0</selenium.version>
-        <testng.version>7.10.2</testng.version>
         <cucumber.version>7.20.1</cucumber.version>
+        <junit.jupiter.version>5.11.4</junit.jupiter.version>
+        <junit.platform.version>1.11.4</junit.platform.version>
         <allure.version>2.29.1</allure.version>
         <restassured.version>5.5.0</restassured.version>
         <jackson.version>2.18.2</jackson.version>
         <log4j.version>2.24.3</log4j.version>
-        <suiteXmlFile>src/test/resources/cucumber.xml</suiteXmlFile>
-        <groups></groups>
     </properties>
 
     <dependencies>
@@ -29,19 +28,24 @@
             <version>${selenium.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
             <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -70,11 +74,6 @@
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
             <version>${allure.version}</version>
         </dependency>
@@ -94,14 +93,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.2</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-                    </suiteXmlFiles>
-                    <groups>${groups}</groups>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
-                    <forkCount>0</forkCount>
+                    <useModulePath>false</useModulePath>
                 </configuration>
             </plugin>
             <plugin>
