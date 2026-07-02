@@ -42,6 +42,14 @@
 .\mvnw.cmd allure:serve
 ```
 
+## Cucumber Hooks
+
+TestNG listener code is not used for the Cucumber flow.
+
+- `src/test/java/com/phanipramod/automation/runners/CucumberTest.java` starts Cucumber with JUnit Platform and the Allure Cucumber plugin.
+- `src/test/java/com/phanipramod/automation/projects/firstproject/steps/GreenKartHooks.java` uses Cucumber `@Before` and `@After` hooks for browser setup, browser quit, and failure screenshots.
+- `src/test/resources/cucumber.properties` is included for IntelliJ feature/scenario runs, so the IDE can find the glue package and reporting plugin without manual run configuration.
+
 ## Jenkins Parameters
 
 - `PROJECT_NAME`
